@@ -1,0 +1,7 @@
+"group","sequence","seq_id","aligned_sequence"
+1,"AAAA","1_1","AAAA-"
+2,"CCCC","2_2","CCCC--"
+1,"AAAT","1_2","AAAT-"
+1,"AAATA","1_3","AAATA"
+2,"TTAA","2_1","--TTAA"
+3,"ACGT","3_1","ACGT"
