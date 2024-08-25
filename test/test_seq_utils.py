@@ -3,7 +3,8 @@ from os.path import join
 from Bio.Seq import Seq
 import unittest
 import pandas as pd
-from SeqUtils.seq_utils import read_fasta, write_fasta, split_fasta, back_translate, REPO
+from SeqUtils.seq_utils import read_fasta, write_fasta, split_fasta, REPO
+from SeqUtils.seq_mod import back_translate
 import sys
 
 

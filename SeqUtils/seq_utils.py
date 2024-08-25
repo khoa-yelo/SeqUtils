@@ -44,12 +44,23 @@ def write_fasta(df, output_file, id_col, description_col, sequence_col):
             f.write(str(row[sequence_col]) + "\n")
 
 
-def split_fasta(fasta_file, output_dir):
+def split_fasta(fasta_file, output_dir, num_seq=1):
     """
     Split a fasta file into multiple files.
     """
-    for record in SeqIO.parse(fasta_file, "fasta"):
-        output_file = os.path.join(output_dir, record.id + ".fasta")
-        with open(output_file, "w") as f:
-            f.write(">" + record.description + "\n")
-            f.write(str(record.seq) + "\n")
+    os.makedirs(output_dir, exist_ok=True)
+    if num_seq == 1:
+        for record in SeqIO.parse(fasta_file, "fasta"):
+            output_file = os.path.join(output_dir, record.id + ".fasta")
+            with open(output_file, "w") as f:
+                f.write(">" + record.description + "\n")
+                f.write(str(record.seq) + "\n")
+    else:
+        records = list(SeqIO.parse(fasta_file, "fasta"))
+        num_files = len(records) // num_seq
+        for i in range(num_files):
+            output_file = os.path.join(output_dir, f"split_{i}.fasta")
+            with open(output_file, "w") as f:
+                for record in records[i*num_seq:(i+1)*num_seq]:
+                    f.write(">" + record.description + "\n")
+                    f.write(str(record.seq) + "\n")

@@ -1,0 +1,5 @@
+Sequence1,Sequence2,Levenshtein
+seq_id1,seq_id1,0
+seq_id1,seq_id1,4
+seq_id2,seq_id2,4
+seq_id2,seq_id2,0
